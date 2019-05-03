@@ -1,16 +1,29 @@
 
 const fs = require('fs');
 
+
+class Ticket {
+
+    constructor(number, desktop) {
+        this.number  = number;
+        this.desktop = desktop;
+    }
+}
+
+
 class TicketControl {
 
     constructor() {
+
         this.lastNumber = 0;
         this.today      = new Date().getDate();
+        this.tickets    = [];
 
         let data = require('../data/data.json');
 
         if (data.today === this.today) {
             this.lastNumber = data.last;
+            this.tickets = data.tickets;
         }
         else {
             this.restartCount();
@@ -22,16 +35,25 @@ class TicketControl {
 
         this.lastNumber++;
 
-        console.log('Next ticket');
+        let ticket = new Ticket(this.lastNumber, null);
+        this.tickets.push(ticket);
 
         this.saveFile();
 
         return `Ticket ${ this.lastNumber }`;
     }
 
+
+    getLastTicket() {
+
+        return `Ticket ${ this.lastNumber }`;
+    }
+
+
     restartCount() {
 
         this.lastNumber = 0;
+        this.tickets    = [];
 
         console.log('Restar count');
 
@@ -42,7 +64,8 @@ class TicketControl {
 
         let jsonData = {
             last: this.lastNumber,
-            today: this.today
+            today: this.today,
+            tickets: this.tickets
         };
 
         let jsonDataString = JSON.stringify(jsonData);

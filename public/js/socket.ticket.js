@@ -14,6 +14,10 @@ socket.on('disconnect', function() {
     console.log('Connect lost');
 });
 
+socket.on('actualStatus', function (data) {
+   label.text(data.actual);
+});
+
 
 $('button').on('click', function() {
 

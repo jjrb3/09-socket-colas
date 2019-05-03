@@ -62,6 +62,8 @@ class TicketControl {
 
         let answerTicket = new Ticket(numberTicket, desktop);
 
+        console.log(answerTicket, this.lastFour);
+
         this.lastFour.unshift(answerTicket);
 
 

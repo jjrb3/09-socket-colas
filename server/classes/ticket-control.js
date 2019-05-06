@@ -47,8 +47,12 @@ class TicketControl {
 
 
     getLastTicket() {
-
         return `Ticket ${ this.lastNumber }`;
+    }
+
+
+    getLastFour() {
+        return this.lastFour;
     }
 
     answerTicket(desktop) {

@@ -32,8 +32,8 @@ io.on('connection', (client) => {
             });
         }
 
-        let attendTicket = ticketControl.answerTicket(data.desktop);
+        let attend = ticketControl.answerTicket(data.desktop);
 
-        callback(attendTicket);
+        callback(attend);
     });
 });

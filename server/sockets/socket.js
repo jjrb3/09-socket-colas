@@ -36,5 +36,9 @@ io.on('connection', (client) => {
         let attend = ticketControl.answerTicket(data.desktop);
 
         callback(attend);
+
+        client.broadcast.emit('refreshLastFour', {
+            lastFour: ticketControl.getLastFour()
+        });
     });
 });

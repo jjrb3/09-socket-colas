@@ -24,6 +24,16 @@ socket.on('actualStatus', function(data) {
    updateHTML(data.lastFour);
 });
 
+
+socket.on('refreshLastFour', function (data) {
+
+    let audio = new Audio('audio/new-ticket.mp3');
+
+    audio.play();
+
+    updateHTML(data.lastFour);
+});
+
 function updateHTML(lastFour) {
 
     for (var i=0; i <= lastFour.length -1; i++) {

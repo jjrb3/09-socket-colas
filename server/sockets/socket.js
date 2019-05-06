@@ -19,7 +19,8 @@ io.on('connection', (client) => {
 
 
     client.emit('actualStatus', {
-        actual: ticketControl.getLastTicket()
+        actual: ticketControl.getLastTicket(),
+        lastFour: ticketControl.getLastFour()
     });
 
 
@@ -32,8 +33,8 @@ io.on('connection', (client) => {
             });
         }
 
-        let attendTicket = ticketControl.answerTicket(data.desktop);
+        let attend = ticketControl.answerTicket(data.desktop);
 
-        callback(attendTicket);
+        callback(attend);
     });
 });
